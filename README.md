@@ -1,2 +1,4 @@
 # maryned-code
-This is my first Repositary.
+This is my first git Repositary.
+<br>
+Maryam MH
