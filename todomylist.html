@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List</title>
+</head>
+<style>
+    body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.todo-container {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  width: 300px;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+.input-group {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+#taskInput {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+}
+
+#addTaskBtn {
+  padding: 10px;
+  border: none;
+  background-color: #28a745;
+  color: white;
+  cursor: pointer;
+  border-radius: 0 5px 5px 0;
+}
+
+#addTaskBtn:hover {
+  background-color: #218838;
+}
+
+#taskList {
+  list-style: none;
+  padding: 0;
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.task-item.completed span {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.delete-btn {
+  color: red;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  color: darkred;
+}
+.listing{
+  display: flex;
+  /* horizontally centered */
+  justify-content: space-between;
+  /* vertically centered */
+  align-items: center;  
+  padding: 10px 0;
+  border-bottom: 1px solid rgb(179, 179, 179);
+}
+.delete{
+  cursor: pointer;
+}
+</style>
+<body>
+
+  <div class="todo-container">
+    <h1>My To-Do List</h1>
+    
+    <div class="input-group">
+      <input type="text" id="taskInput" placeholder="Enter a new task">
+      <button id="addTaskBtn">Add Task</button>
+    </div>
+
+    <ul id="taskList"></ul>
+  </div>
+
+  <script>
+    let inputTask = document.getElementById('taskInput')
+    let addBtn = document.getElementById('addTaskBtn')
+    addBtn.addEventListener('click', addTask)
+    function addTask(){
+      let task = inputTask.value
+      if (task == ""){
+        alert(`Please enter your tasks`)
+        return
+      }
+      let list = document.createElement('div')
+      list.classList.add('listing')
+      list.innerHTML = `<span class="task">${task}</span>`
+      let delBtn = document.createElement('span')
+      delBtn.innerHTML = `❌`
+      delBtn.classList.add('delete')
+      list.appendChild(delBtn)
+document.getElementById('taskList').appendChild(list)
+
+delBtn.addEventListener('click',function(){
+  document.getElementById('taskList').removeChild(list)
+})
+
+inputTask.value = ""
+
+
+    }
+
+  </script>
+
+  
+</body>
+</html>
